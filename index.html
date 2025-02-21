@@ -16,6 +16,7 @@
             min-height: 100vh;
             padding: 20px;
             box-sizing: border-box;
+            background-color: #e0e0e0;
         }
 
         main {
@@ -25,6 +26,7 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
+            gap: 20px;
         }
 
         img {
@@ -32,10 +34,25 @@
             height: auto;
             border-radius: 50%;
             margin-top: 20px;
+            filter: grayscale(50%) sepia(20%) contrast(120%);
+            transition: filter 0.3s ease-in-out;
+        }
+
+        img:hover {
+            filter: grayscale(0%) sepia(0%) contrast(100%);
         }
 
         footer {
             margin-top: 20px;
+        }
+
+        details summary {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        details summary:hover {
+            transform: scale(1.1);
         }
 
         @media (min-width: 768px) {
@@ -60,15 +77,15 @@
             <details>
                 <summary>More About Me</summary>
                 <p>I first appeared in 1942 and have been charming audiences ever since. My signature catchphrase is "I
-                    tawt I taw a puddy tat!"</p>
-                <p>Even though I'm small, I always find a way to stay one step ahead of that sneaky cat, Sylvester.</p>
-                <p>Did you know? I was originally pink when I first appeared in "A Tale of Two Kitties," but later
-                    changed to my iconic yellow color.</p>
-                <p>I live with my loving owner, Granny, and I'm always finding new ways to escape Sylvester’s endless
-                    pursuit.</p>
-                <p>One of my favorite pastimes is singing, and I’ve even won an Academy Award for Best Animated Short
-                    Film!</p>
-                <p>My character is known for being both adorable and surprisingly cunning—despite my innocent looks, I
+                    tawt I taw a puddy tat!" Even though I'm small, I always find a way to stay one step ahead of that
+                    sneaky cat, Sylvester. Did you know? I was originally pink when I first appeared in "A Tale of Two
+                    Kitties," but later
+                    changed to my iconic yellow color. I live with my loving owner, Granny, and I'm always finding new
+                    ways to escape Sylvester’s endless
+                    pursuit. One of my favorite pastimes is singing, and I’ve even won an Academy Award for Best
+                    Animated Short
+                    Film! My character is known for being both adorable and surprisingly cunning—despite my innocent
+                    looks, I
                     always manage to turn the tables on my enemies!</p>
             </details>
         </section>
