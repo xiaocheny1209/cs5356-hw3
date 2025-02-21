@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
+
+    <meta property="og:title" content="Welcome to Tweety's Page!" />
+    <meta property="og:image" content="avatar.jpg" />
+    <meta property="og:url" content="https://xiaocheny1209.github.io/cs5356-hw3/" />
+    <meta property="og:type" content="website" />
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            /* font-family: Arial, sans-serif; */
+            font-family: 'Dancing Script', cursive;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -95,10 +102,57 @@
                 Your browser does not support the video tag.
             </video>
         </section>
+
+        <section id="favorite-artist-section">
+            <h2>My Favorite Artist</h2>
+            <h3 id="artist-name">Loading artist...</h3>
+            <p id="artist-info">Loading artist info...</p>
+            <p id="artist-area">Area: Loading...</p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2025 Tweety's Fan Page</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const artistNameElement = document.getElementById('artist-name');
+            const artistInfoElement = document.getElementById('artist-info');
+            const artistAreaElement = document.getElementById('artist-area');
+
+            // Function to fetch data for Nirvana from MusicBrainz API
+            const fetchArtistData = async () => {
+                try {
+                    const response = await fetch('https://musicbrainz.org/ws/2/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da?fmt=json');
+                    console.log(response);
+                    const data = await response.json();
+                    console.log(data);
+
+                    // Update HTML elements with fetched data
+                    artistNameElement.textContent = data.name;
+                    artistInfoElement.textContent = data.disambiguation || 'No additional information available.';
+                    artistAreaElement.textContent = `Area: ${data.area.name}`;
+                } catch (error) {
+                    console.error('Error fetching artist data:', error);
+                    artistNameElement.textContent = 'Error loading artist data';
+                    artistInfoElement.textContent = '';
+                    artistLifeSpanElement.textContent = '';
+                    artistAreaElement.textContent = '';
+                }
+            };
+
+            // Fetch artist data when the page loads
+            fetchArtistData();
+        });
+
+        document.addEventListener('mousemove', function (event) {
+            const red = Math.floor((event.clientX / window.innerWidth) * 255);
+            const green = Math.floor((event.clientY / window.innerHeight) * 255);
+            const blue = 150;
+            document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        });
+    </script>
+
 </body>
 
 </html>
